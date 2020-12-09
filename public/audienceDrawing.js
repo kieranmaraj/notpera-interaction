@@ -1,3 +1,5 @@
+const socket = io();
+
 let w = 300;
 let h = 300;
 let canvas;
