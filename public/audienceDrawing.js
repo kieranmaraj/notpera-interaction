@@ -1,6 +1,6 @@
 const socket = io();
 let typeInfo = {
-    type: audience,
+    type: "audience",
     isConnected: false
 };
 
