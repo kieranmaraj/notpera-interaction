@@ -50,7 +50,7 @@ document.getElementById('submit').onclick = () =>{
 
 socket.on("connect", ()=>{
     console.log("received server connection");
-    type.isConnected = true;
+    typeInfo.isConnected = true;
     socket.emit("assignType", typeInfo.type);
 })
 
