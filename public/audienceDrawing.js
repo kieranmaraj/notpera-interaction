@@ -54,6 +54,11 @@ socket.on("connect", ()=>{
     socket.emit("assignType", typeInfo.type);
 })
 
+socket.on("disconnect", ()=>{
+    console.log("server disconnected");
+    typeInfo.isConnected = false;
+})
+
 function draw(){
     if(mouse.isDown){
         ctx.beginPath();
