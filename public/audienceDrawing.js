@@ -1,4 +1,8 @@
 const socket = io();
+let typeInfo = {
+    type: audience,
+    isConnected: false
+};
 
 let w = 300;
 let h = 300;
@@ -43,6 +47,12 @@ document.getElementById('submit').onclick = () =>{
     // ctx.fillStyle = "white";
     ctx.clearRect(0, 0, w, h);
 }
+
+socket.on("connect", ()=>{
+    console.log("received server connection");
+    type.isConnected = true;
+    socket.emit("assignType", typeInfo.type);
+})
 
 function draw(){
     if(mouse.isDown){
