@@ -34,8 +34,9 @@ io.on('connection', (socket)=>{
 
     socket.on("canvasData", (blob)=>{
         // console.log(blob);
+        let imgBlob = new Blob(blob, {type: 'image/png'});
 
-        toBuffer(blob, (err, buffer)=>{
+        toBuffer(imgBlob, (err, buffer)=>{
             if(err) throw err
 
             console.log(buffer);
