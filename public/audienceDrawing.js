@@ -48,6 +48,8 @@ document.getElementById('submit').onclick = () =>{
 
     if(typeInfo.isConnected){
         canvas.toBlob((blob)=>{
+            let arraybuf = blob.arrayBuffer();
+            console.log(arraybuf);
             socket.emit("canvasData", blob.arrayBuffer());
             // console.log(blob);
             // socket.emit
