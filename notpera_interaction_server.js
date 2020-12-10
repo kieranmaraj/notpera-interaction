@@ -31,6 +31,10 @@ io.on('connection', (socket)=>{
         }
     })
 
+    socket.on("canvasData", (blob)=>{
+        console.log(blob);
+    })
+
     socket.on("disconnect", ()=>{
         if(socket.type == "audience"){
             audienceSize--;

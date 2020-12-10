@@ -8,7 +8,6 @@ let w = 300;
 let h = 300;
 let canvas;
 let ctx;
-let canvasCoordinates = [];
 
 let mouse = {
     x: 0,
@@ -46,6 +45,16 @@ canvas.addEventListener('pointerup', (event)=>{
 document.getElementById('submit').onclick = () =>{
     // ctx.fillStyle = "white";
     ctx.clearRect(0, 0, w, h);
+
+    if(typeInfo.isConnected){
+        canvas.toBlob((blob)=>{
+            socket.emit("canvasData", blob);
+            // console.log(blob);
+            // socket.emit
+        })
+    }
+    
+    
 }
 
 socket.on("connect", ()=>{
