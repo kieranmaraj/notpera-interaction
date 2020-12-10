@@ -33,8 +33,9 @@ io.on('connection', (socket)=>{
     })
 
     socket.on("canvasData", (arraybuffer)=>{
-        let buffer = Buffer.from(arraybuffer);
-        console.log(buffer);
+        // let buffer = Buffer.from(arraybuffer);
+        console.log(arraybuffer);
+        console.log(typeof(arraubuffer));
         // console.log(blob);
         // let imgBlob = new Blob(blob, {type: 'image/png'});
 
