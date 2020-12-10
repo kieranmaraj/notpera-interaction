@@ -32,15 +32,17 @@ io.on('connection', (socket)=>{
         }
     })
 
-    socket.on("canvasData", (blob)=>{
+    socket.on("canvasData", (arraybuffer)=>{
+        let buffer = Buffer.from(arraybuffer);
+        console.log(buffer);
         // console.log(blob);
-        let imgBlob = new Blob(blob, {type: 'image/png'});
+        // let imgBlob = new Blob(blob, {type: 'image/png'});
 
-        toBuffer(imgBlob, (err, buffer)=>{
-            if(err) throw err
+        // toBuffer(imgBlob, (err, buffer)=>{
+        //     if(err) throw err
 
-            console.log(buffer);
-        })
+        //     console.log(buffer);
+        // })
     })
 
     socket.on("disconnect", ()=>{
