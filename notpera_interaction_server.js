@@ -1,6 +1,7 @@
 let express = require("express");// use express to serve up the UI page
 // let http = require("http").createServer(app)
 const socketIO = require('socket.io');
+let toBuffer = require('blob-to-buffer');
 
 
 const PORT = process.env.PORT || 5001;
@@ -32,7 +33,13 @@ io.on('connection', (socket)=>{
     })
 
     socket.on("canvasData", (blob)=>{
-        console.log(blob);
+        // console.log(blob);
+
+        toBuffer(blob, (err, buffer)=>{
+            if(err) throw err
+
+            console.log(buffer);
+        })
     })
 
     socket.on("disconnect", ()=>{
