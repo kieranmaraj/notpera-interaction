@@ -60,7 +60,7 @@ document.getElementById('submit').onclick = () =>{
         socket.emit("canvasData", pixels);
     }
 
-    ctx.clearRect(0, 0, w, h);
+    // ctx.clearRect(0, 0, w, h);
     
     
 }
