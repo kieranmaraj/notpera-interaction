@@ -12,6 +12,7 @@ const server = express()
 const io = socketIO(server);
 
 io.on('connection', (socket)=>{
+    console.log("hello!");
     console.log("received connection from client: ");
 
     socket.on("assignType", (type)=>{
