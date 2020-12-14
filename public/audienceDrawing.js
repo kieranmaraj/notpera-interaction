@@ -43,18 +43,24 @@ canvas.addEventListener('pointerup', (event)=>{
 });
 
 document.getElementById('submit').onclick = () =>{
-    // ctx.fillStyle = "white";
-    ctx.clearRect(0, 0, w, h);
-
+ 
     if(typeInfo.isConnected){
-        canvas.toBlob((blob)=>{
-            let arraybuf = blob.arrayBuffer();
-            console.log(arraybuf);
-            socket.emit("canvasData", blob.arrayBuffer());
-            // console.log(blob);
-            // socket.emit
-        })
+
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imageData.data;
+
+        let pixels = [];
+
+        for(var i =0; i < data.length; i+=4){
+            pixels.push(data[i+3]);                               
+        }
+
+        console.log(pixels);
+
+        socket.emit("canvasData", pixels);
     }
+
+    ctx.clearRect(0, 0, w, h);
     
     
 }
@@ -73,9 +79,10 @@ socket.on("disconnect", ()=>{
 function draw(){
     if(mouse.isDown){
         ctx.beginPath();
-        // ctx.m /oveTo(mouse.x, mouse.y);
+        ctx.fillstyle = "black";
         ctx.arc(mouse.x, mouse.y, 10, 0, 2*Math.PI);
         ctx.fill();
+        ctx.closePath();
     }
 
     window.requestAnimationFrame(draw);

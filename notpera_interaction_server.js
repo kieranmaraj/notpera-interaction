@@ -1,19 +1,12 @@
 let express = require("express");// use express to serve up the UI page
-// let http = require("http").createServer(app)
 const socketIO = require('socket.io');
-let toBuffer = require('blob-to-buffer');
-
 
 const PORT = process.env.PORT || 5001;
-const INDEX = '/public/';
-
 let audienceSize = 0;
 
 
 const server = express()
-    // .use((req, res) => res.sendFile(INDEX, {root: __dirname}))
     .use(express.static(__dirname + "/public"))
-    // .get('/', (req, res) => res.render('/index'))
     .listen(PORT, () => console.log(`Listening on port : ${PORT}`));
 
 const io = socketIO(server);
@@ -32,18 +25,17 @@ io.on('connection', (socket)=>{
         }
     })
 
-    socket.on("canvasData", (arraybuffer)=>{
+    socket.on("canvasData", (array)=>{
         // let buffer = Buffer.from(arraybuffer);
-        console.log(arraybuffer);
-        console.log(typeof(arraubuffer));
-        // console.log(blob);
-        // let imgBlob = new Blob(blob, {type: 'image/png'});
-
-        // toBuffer(imgBlob, (err, buffer)=>{
-        //     if(err) throw err
-
-        //     console.log(buffer);
-        // })
+        // console.log(array);
+        io.sockets.clients((error, clients)=>{
+            if(error) throw error;
+            for(let i =0; i < clients.length; i++){
+                if(io.sockets.connected[clients[i]].type === "image-receiver"){
+                    io.sockets.connected[clients[i]].emit("canvasData", array);
+                }
+            }
+        })   
     })
 
     socket.on("disconnect", ()=>{
