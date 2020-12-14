@@ -52,7 +52,14 @@ document.getElementById('submit').onclick = () =>{
         let pixels = [];
 
         for(var i =0; i < data.length; i+=4){
-            pixels.push(data[i+3]);                               
+            let val = data[i+3];
+
+            if(val==0){
+                val = 255;
+            }else if(val > 0){
+                val = 0;
+            }
+            pixels.push(val);                               
         }
 
         console.log(pixels);
