@@ -22,7 +22,7 @@ setUpCanvas();
 window.requestAnimationFrame(draw);
 
 window.ontouchstart = function(event) {
-    if (event.touches.length>1) { //If there is more than one touch
+    if (event.touches.length>=1) { 
         event.preventDefault();
     }
 }
