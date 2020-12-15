@@ -9,6 +9,8 @@ let h = 300;
 let canvas;
 let ctx;
 
+let display = document.getElementById('returnIndividual')
+
 let mouse = {
     x: 0,
     y: 0,
@@ -61,15 +63,10 @@ document.getElementById('submit').onclick = () =>{
             }
             pixels.push(val);                               
         }
-
-        console.log(pixels);
-
+        // console.log(pixels);
         socket.emit("canvasData", pixels);
     }
-
-    // ctx.clearRect(0, 0, w, h);
-    
-    
+    ctx.clearRect(0, 0, w, h);
 }
 
 socket.on("connect", ()=>{
@@ -85,6 +82,8 @@ socket.on("disconnect", ()=>{
 
 socket.on("returnIndividual", (classify)=>{
     console.log(`You voted for: ${classify}`);
+    const dispString = `You voted for: ${classify}`;
+    display.innerHTML = dispString;
 })
 
 function draw(){
