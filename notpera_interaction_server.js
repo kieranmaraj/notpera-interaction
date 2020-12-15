@@ -1,8 +1,11 @@
 let express = require("express");// use express to serve up the UI page
 const socketIO = require('socket.io');
+const metal = require("metal-name");
 
 const PORT = process.env.PORT || 5001;
 let audienceSize = 0;
+
+let names = [];
 
 
 const server = express()
@@ -15,6 +18,7 @@ io.on('connection', (socket)=>{
     console.log("hello!");
     console.log("received connection from client: ");
 
+
     socket.on("assignType", (type)=>{
         socket.type = type;
 
@@ -23,6 +27,15 @@ io.on('connection', (socket)=>{
         if(type == "audience"){
             audienceSize++;
             console.log(`Audience size is ${audienceSize}.`);
+
+
+            let metalName = metal();
+            while(names.indexOf(metalName) >= 0){
+                metalName = metal();
+            }
+            names.push(metalName);
+            socket.name = metalName;
+
         }
     })
 
@@ -52,6 +65,9 @@ io.on('connection', (socket)=>{
 
     socket.on("disconnect", ()=>{
         if(socket.type == "audience"){
+            let ndx = names.indexOf(socket.name);
+            names.splice(ndx, 1);
+
             audienceSize--;
             console.log(`Audience member left. Audience size is: ${audienceSize}.`);
         }

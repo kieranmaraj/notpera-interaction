@@ -11,6 +11,7 @@
   "dependencies": {
     "blob-to-buffer": "^1.2.9",
     "express": "^4.17.1",
+    "metal-name": "^2.0.0",
     "path": "^0.12.7",
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.1"
