@@ -69,7 +69,7 @@ io.on('connection', (socket)=>{
         io.sockets.clients((error, clients)=>{
             if(error) throw error;
             for(let i =0; i < clients.length; i++){
-                if(io.sockets.connected[clients[i]].type === "audience"){
+                if(io.sockets.connected[clients[i]].type === "audience" || io.sockets.connected[clients[i]].type === "footswitch"){
                     io.sockets.connected[clients[i]].emit("returnCollective", classify);
                 }
             }
