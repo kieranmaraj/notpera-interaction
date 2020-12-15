@@ -21,6 +21,12 @@ setUpCanvas();
 
 window.requestAnimationFrame(draw);
 
+window.ontouchstart = function(event) {
+    if (event.touches.length>1) { //If there is more than one touch
+        event.preventDefault();
+    }
+}
+
 canvas.addEventListener('pointerdown', (event)=>{
     const pos = getPointerPosition(canvas, event);
     
