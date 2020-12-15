@@ -83,6 +83,10 @@ socket.on("disconnect", ()=>{
     typeInfo.isConnected = false;
 })
 
+socket.on("returnIndividual", (classify)=>{
+    console.log(`You voted for: ${classify}`);
+})
+
 function draw(){
     if(mouse.isDown){
         ctx.beginPath();

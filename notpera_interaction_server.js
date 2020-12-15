@@ -54,6 +54,17 @@ io.on('connection', (socket)=>{
         })   
     })
 
+    socket.on("returnIndividual", (name, classify)=>{
+        io.sockets.clients((error, clients)=>{
+            if(error) throw error;
+            for(let i = 0; i < clients.length; i++){
+                if(io.sockets.connected[clients[i]].name == name){
+                    io.sockets.connected[clients[i]].emit("returnIndividual", classify);
+                }
+            }
+        })
+    })
+
     socket.on("count_votes", (n)=>{
         io.sockets.clients((error, clients)=>{
             if(error) throw error;
