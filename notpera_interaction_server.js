@@ -65,6 +65,17 @@ io.on('connection', (socket)=>{
         })
     })
 
+    socket.on("returnCollective", (classify)=>{
+        io.sockets.clients((error, clients)=>{
+            if(error) throw error;
+            for(let i =0; i < clients.length; i++){
+                if(io.sockets.connected[clients[i]].type === "audience"){
+                    io.sockets.connected[clients[i]].emit("returnCollective", classify);
+                }
+            }
+        }) 
+    })
+
     socket.on("count_votes", (n)=>{
         io.sockets.clients((error, clients)=>{
             if(error) throw error;

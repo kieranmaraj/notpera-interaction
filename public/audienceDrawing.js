@@ -86,6 +86,12 @@ socket.on("returnIndividual", (classify)=>{
     display.innerHTML = dispString;
 })
 
+socket.on("returnCollective", (classify=>{
+    console.log(`The audience has selected: ${classify}`);
+    const dispString = `The audience has selected: ${classify}`;
+    display.innerHTML = dispString;
+}))
+
 function draw(){
     if(mouse.isDown){
         ctx.beginPath();
