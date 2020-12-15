@@ -36,7 +36,7 @@ io.on('connection', (socket)=>{
             names.push(metalName);
             socket.name = metalName;
 
-            socket.emit("assign_name", metalName);
+            // socket.emit("assign_name", metalName);
 
         }
     })
@@ -48,7 +48,7 @@ io.on('connection', (socket)=>{
             if(error) throw error;
             for(let i =0; i < clients.length; i++){
                 if(io.sockets.connected[clients[i]].type === "image-receiver"){
-                    io.sockets.connected[clients[i]].emit("canvasData", array);
+                    io.sockets.connected[clients[i]].emit("canvasData", array, socket.name);
                 }
             }
         })   
