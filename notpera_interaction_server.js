@@ -36,6 +36,8 @@ io.on('connection', (socket)=>{
             names.push(metalName);
             socket.name = metalName;
 
+            socket.emit("assign_name", metalName);
+
         }
     })
 
