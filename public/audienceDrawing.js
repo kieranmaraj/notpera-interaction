@@ -9,7 +9,7 @@ let h = 300;
 let canvas;
 let ctx;
 
-let display = document.getElementById('returnIndividual')
+let display = document.getElementById('classification_return')
 
 let mouse = {
     x: 0,
