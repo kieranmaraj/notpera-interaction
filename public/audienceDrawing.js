@@ -50,6 +50,8 @@ canvas.addEventListener('pointerdown', (event)=>{
     lastPoint.y = pos.y;
     mouse.x = pos.x;
     mouse.y = pos.y;
+
+    return false
 });
 
 canvas.addEventListener('pointermove', (event)=>{
@@ -62,7 +64,11 @@ canvas.addEventListener('pointermove', (event)=>{
         lastPoint.y = mouse.y;
         mouse.x = pos.x;
         mouse.y = pos.y;
+
+        
     }
+
+    return false
 });
 
 canvas.addEventListener('pointerup', (event)=>{
@@ -71,6 +77,8 @@ canvas.addEventListener('pointerup', (event)=>{
     if(mouse.isDown){
         mouse.isDown = false;
     }
+
+    return false
 });
 
 document.getElementById('submit').onclick = () =>{
