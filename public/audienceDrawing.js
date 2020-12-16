@@ -82,6 +82,9 @@ canvas.addEventListener('mouseup', (event)=>{
 }, false);
 
 canvas.addEventListener("touchstart", (event)=>{
+
+    event.preventDefault();
+
     let touch = event.touches[0];
 
     const pos = getPointerPosition(canvas, touch);
@@ -97,6 +100,8 @@ canvas.addEventListener("touchstart", (event)=>{
 }, false)
 
 canvas.addEventListener("touchmove", (event)=>{
+    event.preventDefault();
+
     let touch = event.touches[0];
 
     const pos = getPointerPosition(canvas, touch);
@@ -116,6 +121,9 @@ canvas.addEventListener("touchmove", (event)=>{
 
 canvas.addEventListener("touchend", (event)=>{
     // let touch = event.touches[0];
+
+    event.preventDefault();
+
 
     if(mouse.isDown){
         mouse.isDown = false;
