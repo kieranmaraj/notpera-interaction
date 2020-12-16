@@ -169,7 +169,9 @@ socket.on("returnCollective", (classify=>{
 function draw(){
     if(mouse.isDown){
         ctx.beginPath();
-        ctx.fillstyle = "black";
+        ctx.strokeStyle = "black";
+        ctx.lineCap = "round";
+        ctx.lineWidth = 10;
         ctx.moveTo(lastPoint.x, lastPoint.y);
         ctx.lineTo(mouse.x, mouse.y);
         // ctx.arc(mouse.x, mouse.y, 10, 0, 2*Math.PI);
@@ -195,5 +197,5 @@ function setUpCanvas(){
     canvas.width = w;
     canvas.height = h;
     canvas.style.border = "1px solid #000000";
-    ctx.lineWidth = 10;
+   
 }
