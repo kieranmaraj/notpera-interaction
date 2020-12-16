@@ -41,14 +41,14 @@ io.on('connection', (socket)=>{
         }
     })
 
-    socket.on("canvasData", (array)=>{
+    socket.on("canvasData", (obj)=>{
         // let buffer = Buffer.from(arraybuffer);
         // console.log(array);
         io.sockets.clients((error, clients)=>{
             if(error) throw error;
             for(let i =0; i < clients.length; i++){
                 if(io.sockets.connected[clients[i]].type === "image-receiver"){
-                    io.sockets.connected[clients[i]].emit("canvasData", array, socket.name);
+                    io.sockets.connected[clients[i]].emit("canvasData", obj, socket.name);
                 }
             }
         })   
