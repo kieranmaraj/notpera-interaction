@@ -147,7 +147,8 @@ document.getElementById('submit').onclick = () =>{
         const sendData = {group: group, canvas: pixels};
 
 
-        socket.emit("canvasData", pixels);
+        // socket.emit("canvasData", pixels);
+        socket.emit("canvasData", sendData);
     }
     ctx.clearRect(0, 0, w, h);
 }
