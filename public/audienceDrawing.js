@@ -39,7 +39,7 @@ document.body.addEventListener("touchstart", function (e) {
     // }
   }, false);
 
-canvas.addEventListener('pointerdown', (event)=>{
+canvas.addEventListener('mousedown', (event)=>{
     const pos = getPointerPosition(canvas, event);
 
     // event.preventDefault();
@@ -54,7 +54,7 @@ canvas.addEventListener('pointerdown', (event)=>{
     return false
 }, false);
 
-canvas.addEventListener('pointermove', (event)=>{
+canvas.addEventListener('mousemove', (event)=>{
     // event.preventDefault();
 
     const pos = getPointerPosition(canvas, event);
@@ -71,7 +71,7 @@ canvas.addEventListener('pointermove', (event)=>{
     return false
 }, false);
 
-canvas.addEventListener('pointerup', (event)=>{
+canvas.addEventListener('mouseup', (event)=>{
     // event.preventDefault();
 
     if(mouse.isDown){
@@ -80,6 +80,51 @@ canvas.addEventListener('pointerup', (event)=>{
 
     return false
 }, false);
+
+canvas.addEventListener("touchstart", (event)=>{
+    let touch = event.touches[0];
+
+    const pos = getPointerPosition(canvas, touch);
+
+    mouse.isDown = true;
+    lastPoint.x = pos.x;
+    lastPoint.y = pos.y;
+    mouse.x = pos.x;
+    mouse.y = pos.y;
+
+    return false
+
+}, false)
+
+canvas.addEventListener("touchmove", (event)=>{
+    let touch = event.touches[0];
+
+    const pos = getPointerPosition(canvas, touch);
+
+    if(mouse.isDown){
+        lastPoint.x = mouse.x;
+        lastPoint.y = mouse.y;
+        mouse.x = pos.x;
+        mouse.y = pos.y;
+
+        
+    }
+
+    return false
+
+}, false)
+
+canvas.addEventListener("touchend", (event)=>{
+    // let touch = event.touches[0];
+
+    if(mouse.isDown){
+        mouse.isDown = false;
+    }
+
+    return false
+
+
+}, false)
 
 document.getElementById('submit').onclick = () =>{
  
