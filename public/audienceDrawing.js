@@ -24,22 +24,22 @@ setUpCanvas();
 window.requestAnimationFrame(draw);
 
 document.body.addEventListener("touchstart", function (e) {
-    if (e.target == canvas) {
+    // if (e.target == canvas) {
       e.preventDefault();
-    }
+    // }
   }, false);
   document.body.addEventListener("touchend", function (e) {
-    if (e.target == canvas) {
+    // if (e.target == canvas) {
       e.preventDefault();
-    }
+    // }
   }, false);
   document.body.addEventListener("touchmove", function (e) {
-    if (e.target == canvas) {
+    // if (e.target == canvas) {
       e.preventDefault();
-    }
+    // }
   }, false);
 
-canvas.addEventListener('onpointerdown', (event)=>{
+canvas.addEventListener('pointerdown', (event)=>{
     const pos = getPointerPosition(canvas, event);
 
     // event.preventDefault();
@@ -52,7 +52,7 @@ canvas.addEventListener('onpointerdown', (event)=>{
     mouse.y = pos.y;
 });
 
-canvas.addEventListener('onpointermove', (event)=>{
+canvas.addEventListener('pointermove', (event)=>{
     // event.preventDefault();
 
     const pos = getPointerPosition(canvas, event);
@@ -65,7 +65,7 @@ canvas.addEventListener('onpointermove', (event)=>{
     }
 });
 
-canvas.addEventListener('onpointerup', (event)=>{
+canvas.addEventListener('pointerup', (event)=>{
     // event.preventDefault();
 
     if(mouse.isDown){
