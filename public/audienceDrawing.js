@@ -38,6 +38,8 @@ canvas.addEventListener('pointerdown', (event)=>{
     mouse.isDown = true;
     lastPoint.x = pos.x;
     lastPoint.y = pos.y;
+    mouse.x = pos.x;
+    mouse.y = pos.y;
 });
 
 canvas.addEventListener('pointermove', (event)=>{
