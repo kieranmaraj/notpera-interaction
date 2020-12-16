@@ -195,4 +195,5 @@ function setUpCanvas(){
     canvas.width = w;
     canvas.height = h;
     canvas.style.border = "1px solid #000000";
+    ctx.lineWidth = 10;
 }
