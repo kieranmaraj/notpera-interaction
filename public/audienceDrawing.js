@@ -138,6 +138,15 @@ document.getElementById('submit').onclick = () =>{
             pixels.push(val);                               
         }
         // console.log(pixels);
+
+        let menu = document.getElementById("groups");
+        let group = menu.value;
+
+        console.log(group);
+
+        const sendData = {group: group, canvas: pixels};
+
+
         socket.emit("canvasData", pixels);
     }
     ctx.clearRect(0, 0, w, h);
