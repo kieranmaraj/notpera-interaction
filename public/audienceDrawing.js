@@ -39,7 +39,7 @@ document.body.addEventListener("touchstart", function (e) {
     }
   }, false);
 
-canvas.addEventListener('pointerdown', (event)=>{
+canvas.addEventListener('onpointerdown', (event)=>{
     const pos = getPointerPosition(canvas, event);
 
     // event.preventDefault();
@@ -52,13 +52,10 @@ canvas.addEventListener('pointerdown', (event)=>{
     mouse.y = pos.y;
 });
 
-canvas.addEventListener('pointermove', (event)=>{
+canvas.addEventListener('onpointermove', (event)=>{
     // event.preventDefault();
 
     const pos = getPointerPosition(canvas, event);
-
-    
-
 
     if(mouse.isDown){
         lastPoint.x = mouse.x;
@@ -68,7 +65,7 @@ canvas.addEventListener('pointermove', (event)=>{
     }
 });
 
-canvas.addEventListener('pointerup', (event)=>{
+canvas.addEventListener('onpointerup', (event)=>{
     // event.preventDefault();
 
     if(mouse.isDown){
