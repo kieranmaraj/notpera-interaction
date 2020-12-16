@@ -52,7 +52,7 @@ canvas.addEventListener('pointerdown', (event)=>{
     mouse.y = pos.y;
 
     return false
-});
+}, false);
 
 canvas.addEventListener('pointermove', (event)=>{
     // event.preventDefault();
@@ -69,7 +69,7 @@ canvas.addEventListener('pointermove', (event)=>{
     }
 
     return false
-});
+}, false);
 
 canvas.addEventListener('pointerup', (event)=>{
     // event.preventDefault();
@@ -79,7 +79,7 @@ canvas.addEventListener('pointerup', (event)=>{
     }
 
     return false
-});
+}, false);
 
 document.getElementById('submit').onclick = () =>{
  
