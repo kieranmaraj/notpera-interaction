@@ -39,7 +39,10 @@ canvas.addEventListener('pointerdown', (event)=>{
 });
 
 canvas.addEventListener('pointermove', (event)=>{
+    event.preventDefault();
+
     const pos = getPointerPosition(canvas, event);
+
 
     if(mouse.isDown){
         mouse.x = pos.x;
@@ -48,6 +51,8 @@ canvas.addEventListener('pointermove', (event)=>{
 });
 
 canvas.addEventListener('pointerup', (event)=>{
+    event.preventDefault();
+    
     if(mouse.isDown){
         mouse.isDown = false;
     }

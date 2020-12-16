@@ -5,14 +5,29 @@
         
     </head>
     <body>
-        <div id="main">
+        <div>
             <h1>NO(T)Pera: Draw to Vote</h1>
+        </div>
+        <div>
+            <label for="groups">Select a group:</label>
+            <select name="groups" id="groups">
+                <option value="one">One</option>
+                <option value="two">Two</option>
+                <option value="three">Three</option>
+                <option value="four">Four</option>
+                <option value="five">Five</option>
+                <option value="six">Six</option>
+                <option value="seven">Seven</option>
+            </select>
+        </div>
+        <div id="main">
             <canvas id="canvas"></canvas> 
             
         </div>
 
-        <button type="button" id="submit">Submit</button>
+        
         <div>
+            <button type="button" id="submit">Submit</button>
             <p id="classification_return"></p>
         </div>
         
