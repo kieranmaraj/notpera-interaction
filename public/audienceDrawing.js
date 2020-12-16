@@ -116,6 +116,7 @@ function draw(){
         ctx.lineTo(mouse.x, mouse.y);
         // ctx.arc(mouse.x, mouse.y, 10, 0, 2*Math.PI);
         // ctx.fill();
+        ctx.stroke();
         ctx.closePath();
     }
 
