@@ -45,8 +45,12 @@ canvas.addEventListener('pointermove', (event)=>{
 
     const pos = getPointerPosition(canvas, event);
 
+    
+
 
     if(mouse.isDown){
+        lastPoint.x = mouse.x;
+        lastPoint.y = mouse.y;
         mouse.x = pos.x;
         mouse.y = pos.y;
     }
