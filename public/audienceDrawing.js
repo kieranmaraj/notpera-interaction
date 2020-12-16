@@ -17,6 +17,8 @@ let mouse = {
     isDown: false
 }
 
+let lastPoint = {x: 0, y: 0};
+
 setUpCanvas();
 
 window.requestAnimationFrame(draw);
@@ -34,8 +36,8 @@ canvas.addEventListener('pointerdown', (event)=>{
     event.stopPropagation();
     
     mouse.isDown = true;
-    mouse.x = pos.x;
-    mouse.y = pos.y;
+    lastPoint.x = pos.x;
+    lastPoint.y = pos.y;
 });
 
 canvas.addEventListener('pointermove', (event)=>{
@@ -52,7 +54,7 @@ canvas.addEventListener('pointermove', (event)=>{
 
 canvas.addEventListener('pointerup', (event)=>{
     event.preventDefault();
-    
+
     if(mouse.isDown){
         mouse.isDown = false;
     }
@@ -110,8 +112,10 @@ function draw(){
     if(mouse.isDown){
         ctx.beginPath();
         ctx.fillstyle = "black";
-        ctx.arc(mouse.x, mouse.y, 10, 0, 2*Math.PI);
-        ctx.fill();
+        ctx.moveTo(lastPoint.x, lastPoint.y);
+        ctx.lineTo(mouse.x, mouse.y);
+        // ctx.arc(mouse.x, mouse.y, 10, 0, 2*Math.PI);
+        // ctx.fill();
         ctx.closePath();
     }
 
