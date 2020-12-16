@@ -23,17 +23,27 @@ setUpCanvas();
 
 window.requestAnimationFrame(draw);
 
-// window.ontouchstart = function(event) {
-//     if (event.touches.length>=1) { 
-//         event.preventDefault();
-//     }
-// }
+document.body.addEventListener("touchstart", function (e) {
+    if (e.target == canvas) {
+      e.preventDefault();
+    }
+  }, false);
+  document.body.addEventListener("touchend", function (e) {
+    if (e.target == canvas) {
+      e.preventDefault();
+    }
+  }, false);
+  document.body.addEventListener("touchmove", function (e) {
+    if (e.target == canvas) {
+      e.preventDefault();
+    }
+  }, false);
 
 canvas.addEventListener('pointerdown', (event)=>{
     const pos = getPointerPosition(canvas, event);
 
-    event.preventDefault();
-    event.stopPropagation();
+    // event.preventDefault();
+    // event.stopPropagation();
     
     mouse.isDown = true;
     lastPoint.x = pos.x;
@@ -43,7 +53,7 @@ canvas.addEventListener('pointerdown', (event)=>{
 });
 
 canvas.addEventListener('pointermove', (event)=>{
-    event.preventDefault();
+    // event.preventDefault();
 
     const pos = getPointerPosition(canvas, event);
 
@@ -59,7 +69,7 @@ canvas.addEventListener('pointermove', (event)=>{
 });
 
 canvas.addEventListener('pointerup', (event)=>{
-    event.preventDefault();
+    // event.preventDefault();
 
     if(mouse.isDown){
         mouse.isDown = false;
