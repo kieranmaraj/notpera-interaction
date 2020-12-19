@@ -181,7 +181,7 @@ function draw(){
         ctx.beginPath();
         ctx.strokeStyle = "black";
         ctx.lineCap = "round";
-        ctx.lineWidth = 10;
+        ctx.lineWidth = 5;
         ctx.moveTo(lastPoint.x, lastPoint.y);
         ctx.lineTo(mouse.x, mouse.y);
         // ctx.arc(mouse.x, mouse.y, 10, 0, 2*Math.PI);
