@@ -9,6 +9,9 @@ let h = 300;
 let canvas;
 let ctx;
 
+let canvas_resize;
+let ctx_resize;
+
 let display = document.getElementById('classification_return')
 window.addEventListener("resize", resizeCanvas, false);
 
@@ -121,10 +124,20 @@ canvas.addEventListener("touchend", (event)=>{
 }, false)
 
 document.getElementById('submit').onclick = () =>{
+
+    
  
     if(typeInfo.isConnected){
 
-        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        ctx_resize.clearRect(0, 0, 300, 300);
+
+        let scale = Math.min(canvas_resize.width/canvas.width, canvas_resize.height/canvas.height);
+        let x = (canvas_resize.width/2) - (canvas.width/2) * scale;
+        let y = (canvas_resize.height/2) - (canvas.height/2) * scale;
+
+        ctx_resize.drawImage(canvas, x, y, canvas.width*scale, canvas.height*scale);
+
+        const imageData = ctx_resize.getImageData(0, 0, canvas_resize.width, canvas_resize.height);
         const data = imageData.data;
 
         let pixels = [];
@@ -147,9 +160,6 @@ document.getElementById('submit').onclick = () =>{
         console.log(group);
 
         const sendData = {group: group, canvas: pixels};
-
-
-        // socket.emit("canvasData", pixels);
         socket.emit("canvasData", sendData);
     }
     ctx.clearRect(0, 0, w, h);
@@ -208,6 +218,12 @@ function setUpCanvas(){
     ctx=canvas.getContext("2d");
     canvas.width = w;
     canvas.height = h;
+    canvas.style.border = "1px solid #000000";
+
+    canvas_resize = document.getElementById("canvasResize");
+    ctx_resize = canvas_resize.getContext("2d");
+    canvas_resize.width = 300;
+    canvas_resize.height = 300;
     canvas.style.border = "1px solid #000000";
    
 }
