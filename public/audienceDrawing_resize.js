@@ -26,6 +26,8 @@ let lastPoint = {x: 0, y: 0};
 setUpCanvas();
 resizeCanvas();
 
+document.getElementById('canvas').style.display = "none";
+
 window.requestAnimationFrame(draw);
 
 canvas.addEventListener('mousedown', (event)=>{
@@ -123,6 +125,18 @@ canvas.addEventListener("touchend", (event)=>{
 
 }, false)
 
+canvas.addEventListener("mouseout", (event)=>{
+    if(mouse.isDown){
+        mouse.isDown = false;
+    }
+})
+
+document.getElementById('groups').onchange = () =>{
+    canvas.style.display = "initial";
+}
+
+// document.getElementById('groups').onfocus = this.selectedIndex = -1;
+
 document.getElementById('submit').onclick = () =>{
 
     
@@ -163,6 +177,7 @@ document.getElementById('submit').onclick = () =>{
         socket.emit("canvasData", sendData);
     }
     ctx.clearRect(0, 0, w, h);
+    canvas.style.display = 'none';
 }
 
 socket.on("connect", ()=>{
@@ -184,7 +199,7 @@ socket.on("returnIndividual", (classify)=>{
 
 socket.on("returnCollective", (classify=>{
     console.log(`The audience has selected: ${classify}`);
-    const dispString = `The audience has selected: ${classify}`;
+    const dispString = `The audience has voted!: ${classify}`;
     display.innerHTML = dispString;
 }))
 

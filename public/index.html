@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>NO(T)Pera Voting</title>
+        <title>nO(T)pera Voting</title>
 
         <style>
             #canvasResize {
@@ -10,8 +10,12 @@
             }
 
             #groups{
-                width: 50%;
+                width: 30%;
                 max-width: 50%;
+            }
+
+            h1 {
+                font-family: Arial, Helvetica, sans-serif;
             }
         </style>
         
@@ -19,17 +23,21 @@
     <body>
         <div>
             <h1>NO(T)Pera: Draw to Vote</h1>
+            <p>Note drawings will be saved for future display.</p>
         </div>
         <div>
             <label for="groups">Select a group:</label>
-            <select name="groups" id="groups">
-                <option value="one" selected>One: Diane Roblin(piano/synths) </option>
+            <select name="groups" id="groups" onfocus="this.selectedIndex=-1;">
+                <option value="zero" selected>Whole Group</option>
+                <option value="one">One: Diane Roblin(piano/synths) </option>
                 <option value="two">Two: Tom Bickley(EWI+electronics), Danny Sheahan(violin/electronics)</option>
                 <option value="three">Three: Colin James Gibson(guitar), Nicholas Lina(bass), Peter Vukosavljevic(percussion)</option>
                 <option value="four">Four: Melanie Jagmohan(guitar+legos), Omar Shabbar(guitar+electronics)</option>
                 <option value="five">Five: Lo Bil(voice), Viv Corringham(voice+electronics), Kathy Kennedy(voice+electronics)</option>
-                <option value="six">Six: Bjorn Eriksson(feedback boxes), Faadhi Fauzi(synths), Rory Hoy(bass+electronics), Kieran Maraj(electronics)</option>
-                <option value="seven">Seven: Yuanfen Gu(notpera granular), Aida Khorsandi(notpera FM)</option>
+                <option value="six_one">Six-One: Rory Hoy(bass+electronics), Kieran Maraj(electronics)</option>
+                <option value="six_two">Six-Two: Bjorn Eriksson(feedback boxes), Faadhi Fauzi(synths)</option>
+                <option value="seven_one">Seven-One: Aida Khorsandi(synth)</option>
+                <option value="seven_two">Seven-Two: Yuanfen Gu(synth)</option>
             </select>
         </div>
         <div id="main">
