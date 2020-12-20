@@ -27,6 +27,9 @@ setUpCanvas();
 resizeCanvas();
 
 document.getElementById('canvas').style.display = "none";
+let subButton = document.getElementById('submit');
+
+subButton.style.display = "none";
 
 window.requestAnimationFrame(draw);
 
@@ -133,6 +136,8 @@ canvas.addEventListener("mouseout", (event)=>{
 
 document.getElementById('groups').onchange = () =>{
     canvas.style.display = "initial";
+    subButton.style.display = "initial";
+
 }
 
 // document.getElementById('groups').onfocus = this.selectedIndex = -1;
@@ -178,6 +183,7 @@ document.getElementById('submit').onclick = () =>{
     }
     ctx.clearRect(0, 0, w, h);
     canvas.style.display = 'none';
+    subButton.style.display = 'none';
 }
 
 socket.on("connect", ()=>{
