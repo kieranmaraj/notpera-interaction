@@ -87,6 +87,17 @@ io.on('connection', (socket)=>{
         })  
     })
 
+    socket.on("get_random_shapeline", (n)=>{
+        io.sockets.clients((error, clients)=>{
+            if(error) throw error;
+            for(let i =0; i < clients.length; i++){
+                if(io.sockets.connected[clients[i]].type === "image-receiver"){
+                    io.sockets.connected[clients[i]].emit("get_random_shapeline", n);
+                }
+            }
+        })  
+    })
+
     socket.on("disconnect", ()=>{
         if(socket.type == "audience"){
             let ndx = names.indexOf(socket.name);
